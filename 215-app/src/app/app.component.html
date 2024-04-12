@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <mat-icon *ngIf="showHamburger" (click)="toggleHandsetMenu()">menu</mat-icon>
+  <div class="brand">JD App</div>
+  <app-site-navigation *ngIf="!showHamburger"></app-site-navigation>
+</mat-toolbar>
+<div id="handset-menu" *ngIf="showHandsetMenu" (click)="toggleHandsetMenu()">
+  <app-site-navigation></app-site-navigation>
+</div>
+<router-outlet></router-outlet>

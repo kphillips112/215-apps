@@ -1,0 +1,12 @@
+p.test {
+  color: green;
+  background-color: salmon;
+  padding: 20px;
+  border-bottom: 10px dotted black;
+  border-right: 5px solid purple;
+  margin: 100px 50px;
+}
+
+#handset-menu {
+  background-color: blueviolet;
+}

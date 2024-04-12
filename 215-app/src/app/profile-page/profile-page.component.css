@@ -1,0 +1,12 @@
+p,
+div {
+  color: red;
+}
+
+.special {
+  color: blue;
+}
+
+p.special {
+  color: green;
+}
