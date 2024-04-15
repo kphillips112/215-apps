@@ -38,7 +38,7 @@ import {
 export class FoodCalculatorComponent implements OnInit {
   //SET UP FORM GROUP
   foodForm!: FormGroup;
-  unitTypes = ["Cup", "Ounce", "Pound", "Gram", "Kilogram"];
+  unitTypes = ["Core", "Elective", "General Elective"];
 
   //SET UP TABLE
   foodList: Food[] = [];
@@ -48,9 +48,6 @@ export class FoodCalculatorComponent implements OnInit {
     "units",
     "unitType",
     "price",
-    "kilojoules",
-    "lowCal",
-    "trimCal",
     "delete",
   ];
   dataSource = new MatTableDataSource<Food>(this.foodList);
@@ -63,15 +60,18 @@ export class FoodCalculatorComponent implements OnInit {
 
   calculateTotalCalories() {
     this.totalCalories = this.foodList.reduce(
-      (acc, food) => acc + food.calories * food.units,
-      0,
+      (acc, food) => acc + (food.calories * food.units) / 100,
+      0
     );
-  }
+    if (this.foodList.length > 0) {
+      this.totalCalories /= this.foodList.length;
+    }
+}
 
   calculatePrice() {
     this.totalPrice = this.foodList.reduce((acc, food) => {
       if (!food.price) return acc;
-      return acc + food.price * food.units;
+      return acc + (food.price * food.units);
     }, 0);
   }
 
@@ -85,6 +85,10 @@ export class FoodCalculatorComponent implements OnInit {
       units: new FormControl("1"),
       unitType: new FormControl(),
       price: new FormControl(),
+      currentGPA: new FormControl(),
+      currentCreditHours: new FormControl(),
+      potentialGrade: new FormControl(),
+      potentialCreditHours: new FormControl(),
     });
   }
 
@@ -97,8 +101,35 @@ export class FoodCalculatorComponent implements OnInit {
       this.foodForm.value.price,
     );
 
+    let currentGPA = this.foodForm.value.currentGPA;
+    let currentCreditHours = this.foodForm.value.currentCreditHours;
+    let potentialGrade = this.foodForm.value.potentialGrade;
+    let potentialCreditHours = this.foodForm.value.potentialCreditHours;
+
+    let newGPA: number;
+    if (
+      currentGPA !== undefined &&
+      currentCreditHours !== undefined &&
+      potentialGrade !== undefined &&
+      potentialCreditHours !== undefined
+    ) {
+      newGPA =
+        ((currentGPA * currentCreditHours) +
+          (potentialGrade * potentialCreditHours)) /
+        (currentCreditHours + potentialCreditHours);
+    } else {
+      newGPA = currentGPA; // Keep the current GPA if any of the values is undefined
+    }
+
+    // Adjust the GPA of each existing item in the list
+    const numRows = this.foodList.length + 1; // +1 to include the newly added item
+    this.foodList.forEach((food) => {
+      food.gpa = food.gpa ? food.gpa / numRows : undefined;
+    });
+
+    console.log(newGPA); // You can log the new GPA to the console or use it as needed
+
     this.foodList.push(newFood);
-    // console.log(this.foodList);
     this.foodForm.reset();
     this.updateFoodData();
   }

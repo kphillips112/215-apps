@@ -4,22 +4,24 @@
   <mat-grid-list [cols]="columns" rowHeight="80px">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-form-field>
-        <input matInput placeholder="Food" formControlName="foodName" />
+        <input matInput placeholder="Current Credit Hours" formControlName="foodName" />
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-form-field>
-        <input matInput placeholder="Calories" formControlName="calories" />
+        <input matInput placeholder="Current GPA" formControlName="calories" />
       </mat-form-field>
     </mat-grid-tile>
+
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-form-field>
-        <input matInput placeholder="Count" formControlName="units" />
+        <input matInput placeholder="Potential Grade" formControlName="units" />
       </mat-form-field>
     </mat-grid-tile>
+    
     <mat-grid-tile>
       <mat-form-field>
-        <mat-label>Unit Type</mat-label>
+        <mat-label>Course Type</mat-label>
         <select matNativeControl id="unitType" formControlName="unitType">
           <option *ngFor="let unitType of unitTypes">{{ unitType }}</option>
         </select>
@@ -27,7 +29,7 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-form-field>
-        <input matInput placeholder="Price" formControlName="price" />
+        <input matInput placeholder="Course Title" formControlName="price" />
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -38,15 +40,15 @@
 <h2>GPA List</h2>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="foodName">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <th mat-header-cell *matHeaderCellDef>Current Credit Hours</th>
     <td mat-cell *matCellDef="let element">{{ element.foodName }}</td>
   </ng-container>
   <ng-container matColumnDef="calories">
-    <th mat-header-cell *matHeaderCellDef>Calories</th>
+    <th mat-header-cell *matHeaderCellDef>Current GPA</th>
     <td mat-cell *matCellDef="let element">{{ element.calories }}</td>
   </ng-container>
   <ng-container matColumnDef="units">
-    <th mat-header-cell *matHeaderCellDef>Units</th>
+    <th mat-header-cell *matHeaderCellDef>Potential Grade</th>
     <td mat-cell *matCellDef="let element">
       <mat-form-field
         ><input
@@ -58,37 +60,14 @@
     </td>
   </ng-container>
   <ng-container matColumnDef="unitType">
-    <th mat-header-cell *matHeaderCellDef>Unit Type</th>
+    <th mat-header-cell *matHeaderCellDef>Course Type</th>
     <td mat-cell *matCellDef="let element">{{ element.unitType }}</td>
   </ng-container>
   <ng-container matColumnDef="price">
-    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <th mat-header-cell *matHeaderCellDef>Course Title</th>
     <td mat-cell *matCellDef="let element">{{ element.price }}</td>
   </ng-container>
-  <ng-container matColumnDef="kilojoules">
-    <th mat-header-cell *matHeaderCellDef>KJ</th>
-    <td mat-cell *matCellDef="let element">{{ element.kilijoules }}</td>
-  </ng-container>
-  <ng-container matColumnDef="lowCal">
-    <th mat-header-cell *matHeaderCellDef>LowCal</th>
-    <td mat-cell *matCellDef="let element">
-      <button
-        mat-flat-button
-        color="primary"
-        (click)="element.makeLowCal(); updateFoodData()"
-      ></button>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="trimCal">
-    <th mat-header-cell *matHeaderCellDef>Trim</th>
-    <td mat-cell *matCellDef="let element">
-      <button
-        mat-flat-button
-        color="primary"
-        (click)="element.makeLowCal(10); updateFoodData()"
-      ></button>
-    </td>
-  </ng-container>
+  
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef>Delete</th>
     <td mat-cell *matCellDef="let i = index">
@@ -102,8 +81,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 <div id="recipe-data" *ngIf="tableContainsData">
-  <p>Calories: {{ totalCalories }}</p>
-  <p>Price: {{ totalPrice }}</p>
+  <p>Potential GPA: {{ totalCalories }}</p>
   <button mat-raised-button color="primary" (click)="clearTable()">
     Delete All
   </button>
