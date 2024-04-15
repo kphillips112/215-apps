@@ -1,4 +1,4 @@
-<h1>My Food Calculator</h1>
+<h1>My GPA Calculator</h1>
 
 <form [formGroup]="foodForm" (ngSubmit)="addFood()">
   <mat-grid-list [cols]="columns" rowHeight="80px">
@@ -35,7 +35,7 @@
     </mat-grid-tile>
   </mat-grid-list>
 </form>
-<h2>Food list</h2>
+<h2>GPA List</h2>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="foodName">
     <th mat-header-cell *matHeaderCellDef>Name</th>
