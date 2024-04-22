@@ -41,22 +41,29 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    <td mat-cell *matCellDef="let element">
+      <mat-form-field>
+      <input matInput [(ngModel)]="element.name" (ngModelChange)="updateCourseData()" />
+    </mat-form-field>
+    </td>
   </ng-container>
   <ng-container matColumnDef="code">
     <th mat-header-cell *matHeaderCellDef>Code</th>
-    <td mat-cell *matCellDef="let element">{{ element.code }}</td>
-  </ng-container>
-  <ng-container matColumnDef="letterGrade">
-    <th mat-header-cell *matHeaderCellDef>Letter Grade</th>
     <td mat-cell *matCellDef="let element">
-      <mat-form-field
-      ><input
-        matInput
-        type="string"
-        [(ngModel)]="element.letterGrade"
-        (ngModelChange)="updateCourseData()"
-    /></mat-form-field></td>
+      <mat-form-field>
+      <input matInput [(ngModel)]="element.code" (ngModelChange)="updateCourseData()" />
+    </mat-form-field>
+    </td>
+    <ng-container matColumnDef="letterGrade">
+      <th mat-header-cell *matHeaderCellDef>Letter Grade</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <select matNativeControl [(ngModel)]="element.letterGrade" (ngModelChange)="updateCourseData()">
+            <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+          </select>
+        </mat-form-field>
+      </td>
+    </ng-container>
   </ng-container>
   <ng-container matColumnDef="creditHours">
     <th mat-header-cell *matHeaderCellDef>Credit Hours</th>

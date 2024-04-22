@@ -29,9 +29,11 @@ export class Course {
             return 2;
         } else if (this.letterGrade === "D") {
             return 1;
-        } else {
+        } else if (this.letterGrade === "F") {
             return 0;
         }
+        
+        return 0; // Default return statement
     }
 
    

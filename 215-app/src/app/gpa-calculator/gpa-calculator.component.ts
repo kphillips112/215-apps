@@ -36,7 +36,8 @@ export class GpaCalculatorComponent implements OnInit {
 
   //SET UP FORM GROUP
   gpaForm!: FormGroup;
-  letterGrades = ["A", "B", "C", "D"];
+  grades = ['A', 'B', 'C', 'D', 'F'];
+  letterGrades = ["A", "B", "C", "D","F"];
 
   //SET UP TABLE
   courseList: Course[] = [];
