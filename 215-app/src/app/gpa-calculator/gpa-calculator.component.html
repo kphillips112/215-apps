@@ -38,7 +38,8 @@
   </mat-grid-list>
 </form>
 <h2>Transcript</h2>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- Add [class.low-gpa]="totalGradePoint < 2" to the table tag -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [class.low-gpa]="totalGradePoint < 2">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
     <td mat-cell *matCellDef="let element">
