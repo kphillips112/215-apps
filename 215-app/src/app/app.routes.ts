@@ -5,13 +5,13 @@ import { IngredientsTableComponent } from "./recipe-module/ingredients-table/ing
 import { IngredientDetailComponent } from "./recipe-module/ingredient-detail/ingredient-detail.component";
 import { arbitraryGuard } from "./site-guards.guard";
 import { NotFoundComponent } from "./not-found/not-found.component";
-import { FoodCalculatorComponent } from "./calculator/food-calculator/food-calculator.component";
+import { GpaCalculatorComponent } from './gpa-calculator/gpa-calculator.component';
 
 export const routes: Routes = [
   { path: "profile", component: ProfilePageComponent, title: "Profile" },
   {
     path: "calculator",
-    component: FoodCalculatorComponent,
+    component: GpaCalculatorComponent,
     title: "Calculator",
   },
   {

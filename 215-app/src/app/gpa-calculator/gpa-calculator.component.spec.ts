@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FoodCalculatorComponent } from './food-calculator.component';
+import { GpaCalculatorComponent } from './gpa-calculator.component';
 
-describe('FoodCalculatorComponent', () => {
-  let component: FoodCalculatorComponent;
-  let fixture: ComponentFixture<FoodCalculatorComponent>;
+describe('GpaCalculatorComponent', () => {
+  let component: GpaCalculatorComponent;
+  let fixture: ComponentFixture<GpaCalculatorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FoodCalculatorComponent]
+      imports: [GpaCalculatorComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FoodCalculatorComponent);
+    fixture = TestBed.createComponent(GpaCalculatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
